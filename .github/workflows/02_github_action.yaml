@@ -2,7 +2,17 @@ name: Second Action - Single
 
 on:
   workflow_dispatch:
-
+    inputs:
+      debug_mode:
+        type: boolean
+        description: Debug
+        default: false
+        required:false
+      sample_value: 
+        type: string
+        description: Cualquier valor
+        default: ""
+        required: false
 jobs:
   say_hello:
     runs-on: ubuntu-latest
@@ -19,12 +29,5 @@ jobs:
       - name: Step 2 of Second Job
         run: echo "This is the second job, step 2"
 
-  hello_world_2:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Step 1 of Third Job
-        run: echo "This is the third job, step 1"
-      - name: Step 2 of Third Job
-        run: echo "This is the third
 
  
