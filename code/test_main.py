@@ -1,6 +1,7 @@
 import unittest
 from main import sumar, restar, multiplicar, dividir
 
+
 class TestCalculadora(unittest.TestCase):
 
     def test_sumar(self):
@@ -20,6 +21,7 @@ class TestCalculadora(unittest.TestCase):
         self.assertEqual(dividir(7, -1), -7)
         self.assertEqual(dividir(0, 1), 0)
         self.assertEqual(dividir(5, 0), "Error: No se puede dividir por cero")
+
 
 
 if __name__ == '__main__':
