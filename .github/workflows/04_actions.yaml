@@ -4,11 +4,14 @@ on:
   pull_request:
     branches:
       - main
-
+    types:
+      - labeled
 
 jobs:
   hello_world:
     runs-on: ubuntu-latest
     steps:
       - name: First Step
-        run: echo "Hello, World!!"
+        run: |
+          echo "Hello, World!!"
+          echo "Se ha añadido la etiqueta: ${{ github.event.label.name }}"
