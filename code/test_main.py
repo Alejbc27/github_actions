@@ -23,6 +23,5 @@ class TestCalculadora(unittest.TestCase):
         self.assertEqual(dividir(5, 0), "Error: No se puede dividir por cero")
 
 
-
 if __name__ == '__main__':
     unittest.main()
