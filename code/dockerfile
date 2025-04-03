@@ -1,16 +1,26 @@
-# Usa una imagen base oficial de Python
+# Imagen base oficial de Python
 FROM python:3.10-slim
 
-# Establece el directorio de trabajo dentro del contenedor
+# Variables de entorno para evitar que Python genere archivos .pyc y use buffering
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+# Establece el directorio de trabajo
 WORKDIR /app
 
-# Copia los archivos de tu proyecto al contenedor
-COPY . .
+# Copia solo los requirements primero (mejor caché en builds)
+COPY code/requirements.txt .
 
+# Instala las dependencias
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt && \
+    rm -rf ~/.cache/pip
 
+# Copia el resto del código
+COPY code/ .
 
-# Ejecuta los tests al construir (opcional, útil en CI)
-RUN python -m unittest "test_*.py"
+#Ejecutar tests (descomenta si quieres que se ejecuten al construir la imagen)
+RUN python -m unittest discover -s . -p "test_*.py"
 
-# Comando por defecto al ejecutar el contenedor (cambia si haces una API o GUI)
-CMD ["python", "calculadora.py"]
+# Comando por defecto
+CMD ["python", "main.py"]
