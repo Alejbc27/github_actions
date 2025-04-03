@@ -1,0 +1,28 @@
+name: Second Action - Single
+
+on:
+  workflow_dispatch:
+
+jobs:
+  say_hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: First Step
+        run: echo "Hello, World!"
+
+job_2:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Step 1 of Second Job
+      run: echo "This is the second job, step 1"
+    - name: Step 2 of Second Job
+      run: echo "This is the second job, step 2"
+
+job_3:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Step 1 of Third Job
+      run: echo "This is the third job, step 1"
+    - name: Step 2 of Third Job
+      run: echo "This is the third job, step 2"
+ 
