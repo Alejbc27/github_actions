@@ -7,7 +7,7 @@ on:
         type: boolean
         description: Debug
         default: false
-        required:false
+        required: false
       sample_value: 
         type: string
         description: Cualquier valor
