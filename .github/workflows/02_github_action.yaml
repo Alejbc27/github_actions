@@ -1,6 +1,12 @@
 name: Second Action - Single
 
 on:
+  push:
+    branches:
+        - main
+    pull_request:
+      branches:
+        - main
   workflow_dispatch:
     inputs:
       debug_mode:
@@ -12,7 +18,7 @@ on:
         type: string
         description: Cualquier valor
         default: ""
-        required: false
+
 jobs:
   say_hello:
     runs-on: ubuntu-latest

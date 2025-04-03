@@ -1,0 +1,14 @@
+name: Event PR - Single Job
+
+on:
+  pull_request:
+    branches:
+      - main
+
+
+jobs:
+  hello_world:
+    runs-on: ubuntu-latest
+    steps:
+      - name: First Step
+        run: echo "Hello, World!"
