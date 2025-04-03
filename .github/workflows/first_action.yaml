@@ -3,9 +3,9 @@ name: First Action - Single
 on:
   workflow_dispatch:
 
-jobs: 
+jobs:
   say_hello:
     runs-on: ubuntu-latest
     steps:
-      -name: First Step
-      -run: echo "Hello, World!"
+      - name: First Step
+        run: echo "Hello, World!"
