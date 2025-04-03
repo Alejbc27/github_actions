@@ -1,16 +1,21 @@
+
 def sumar(a, b):
     return a + b
+
 
 def restar(a, b):
     return a - b
 
+
 def multiplicar(a, b):
     return a * b
+
 
 def dividir(a, b):
     if b == 0:
         return "Error: No se puede dividir por cero"
     return a / b
+
 
 def calculadora():
     print("Calculadora en Python")
@@ -43,6 +48,7 @@ def calculadora():
         resultado = dividir(num1, num2)
 
     print("Resultado:", resultado)
+
 
 if __name__ == "__main__":
     calculadora()
