@@ -14,3 +14,11 @@ jobs:
     steps:
       - name: Checkout code  
         uses: actions/checkout@v4
+
+      - name: Run linters
+        run: |
+          flake8 code
+
+      - name: Run security check
+        run: |
+          bandit -r code

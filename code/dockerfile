@@ -1,0 +1,16 @@
+# Usa una imagen base oficial de Python
+FROM python:3.10-slim
+
+# Establece el directorio de trabajo dentro del contenedor
+WORKDIR /app
+
+# Copia los archivos de tu proyecto al contenedor
+COPY . .
+
+
+
+# Ejecuta los tests al construir (opcional, útil en CI)
+RUN python -m unittest "test_*.py"
+
+# Comando por defecto al ejecutar el contenedor (cambia si haces una API o GUI)
+CMD ["python", "calculadora.py"]
