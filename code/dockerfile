@@ -1,26 +1,19 @@
 # Imagen base oficial de Python
 FROM python:3.10-slim
 
-# Variables de entorno para evitar que Python genere archivos .pyc y use buffering
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 
-# Establece el directorio de trabajo
 WORKDIR /app
 
-# Copia solo los requirements primero (mejor caché en builds)
-COPY code/requirements.txt .
+COPY requirements.txt .
 
-# Instala las dependencias
 RUN pip install --upgrade pip && \
     pip install -r requirements.txt && \
     rm -rf ~/.cache/pip
 
-# Copia el resto del código
-COPY code/ .
+COPY . .
 
-#Ejecutar tests (descomenta si quieres que se ejecuten al construir la imagen)
 RUN python -m unittest discover -s . -p "test_*.py"
 
-# Comando por defecto
 CMD ["python", "main.py"]
